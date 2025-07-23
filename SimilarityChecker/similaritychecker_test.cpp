@@ -24,16 +24,8 @@ TEST_F(LengthCheckFixture, Twicelength1) {
 
     result = app.getResult("A", "BB");
     EXPECT_EQ(expected, result);
-}
-
-TEST_F(LengthCheckFixture, Twicelength2) {
-
     result = app.getResult("AB", "BBCBE");
     EXPECT_EQ(expected, result);
-}
-TEST_F(LengthCheckFixture, Twicelength3) {
-
     result = app.getResult("ABCDEF", "BBC");
     EXPECT_EQ(expected, result);
 }
-
