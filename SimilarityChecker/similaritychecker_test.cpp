@@ -3,7 +3,9 @@
 
 
 TEST(TC, Samelength) {
-    LengthCheck lc;
-    int result = lc.check("ASD", "DSA");
-    EXPECT_EQ(60, result);
+    LengthCheck app;
+    int result = app.getResult("ASD", "DSA");
+    int expected = 60;
+    EXPECT_EQ(expected, result);
 }
+

@@ -4,11 +4,13 @@ using std::string;
 
 class LengthCheck {
 public:
-    int check(string s1, string s2) {
-        if (s1.size() == s2.size()) {
+    int getResult(string str1, string str2) {
+        int s1 = (int)str1.size();
+        int s2 = (int)str2.size();
+        if (s1 == s2) {
             return 60;
         }
-        return 0;
+ 
     }
 
 };
