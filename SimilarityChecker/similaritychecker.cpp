@@ -1,6 +1,8 @@
+
 #include <iostream>
 #include <string>
-using std::string;
+#include <stdexcept>
+using namespace std;
 
 class LengthCheck {
 public:
@@ -9,6 +11,9 @@ public:
         int s2 = (int)str2.size();
         int result = 0;
         int gap = 0;
+        if (s1 == 0 || s2 == 0) {
+            throw length_error("Must have length");
+        }
         if (s1 == s2) return 60;
         if (s1 < s2) {
             gap = s2 - s1;

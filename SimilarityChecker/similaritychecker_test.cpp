@@ -1,7 +1,6 @@
 #include "gmock/gmock.h"
 #include "similaritychecker.cpp"
 
-
 TEST(TC, Samelength) {
     LengthCheck app;
     int result = app.getResult("ASD", "DSA");
@@ -14,4 +13,8 @@ TEST(TC, DiffLengthS1Short) {
     int result = app.getResult("A", "BB");
     int expected = 0;
     EXPECT_EQ(expected, result);
+}
+TEST(TC, ThrowExceptionS1Is0) {
+    LengthCheck app;
+    EXPECT_THROW(app.getResult(string(""),string("BB")), length_error);
 }
