@@ -4,15 +4,17 @@
 class LengthCheckFixture : public testing::Test {
 public:
     LengthCheck app;
-    int expected = 0;
-    int result = 0;
+
+    void diagLength(int expectedPoint, string input1, string input2) {
+        int actual = app.getResult(input1, input2);
+        EXPECT_EQ(expectedPoint, actual);
+    }
 };
 
 TEST_F(LengthCheckFixture, Samelength) {
 
-    result = app.getResult("ASD", "DSA");
-    expected = 60;
-    EXPECT_EQ(expected, result);
+    diagLength(60, "ASD", "DSA");
+
 }
 
 TEST_F(LengthCheckFixture, ThrowExceptionS1Is0) {
@@ -22,10 +24,14 @@ TEST_F(LengthCheckFixture, ThrowExceptionS1Is0) {
 
 TEST_F(LengthCheckFixture, Twicelength1) {
 
-    result = app.getResult("A", "BB");
-    EXPECT_EQ(expected, result);
-    result = app.getResult("AB", "BBCBE");
-    EXPECT_EQ(expected, result);
-    result = app.getResult("ABCDEF", "BBC");
-    EXPECT_EQ(expected, result);
+    diagLength(0,"A", "BB");
+    diagLength(0,"AB", "BBCBE");
+    diagLength(0,"ABCDEF", "BBC");
+}
+
+TEST_F(LengthCheckFixture, PartialPoint) {
+
+    diagLength(15, "ADFE", "BCDEFAB");
+    diagLength(20, "ABD", "BWCBE");
+
 }
