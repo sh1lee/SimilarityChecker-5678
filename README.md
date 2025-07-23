@@ -1,2 +1,2 @@
-# -SimilarityChecker-5678
+# SimilarityChecker-5678
 SimilarityChecker
