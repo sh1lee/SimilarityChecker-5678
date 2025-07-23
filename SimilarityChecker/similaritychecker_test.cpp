@@ -1,20 +1,26 @@
 #include "gmock/gmock.h"
 #include "similaritychecker.cpp"
 
-TEST(TC, Samelength) {
+class LengthCheckFixture : public testing::Test {
+public:
     LengthCheck app;
-    int result = app.getResult("ASD", "DSA");
-    int expected = 60;
+    int expected = 0;
+    int result = 0;
+};
+
+TEST_F(LengthCheckFixture, Samelength) {
+
+    result = app.getResult("ASD", "DSA");
+    expected = 60;
     EXPECT_EQ(expected, result);
 }
 
-TEST(TC, DiffLengthS1Short) {
-    LengthCheck app;
-    int result = app.getResult("A", "BB");
-    int expected = 0;
+TEST_F(LengthCheckFixture, DiffLengthS1Short) {
+
+    result = app.getResult("A", "BB");
     EXPECT_EQ(expected, result);
 }
-TEST(TC, ThrowExceptionS1Is0) {
-    LengthCheck app;
+TEST_F(LengthCheckFixture, ThrowExceptionS1Is0) {
+
     EXPECT_THROW(app.getResult(string(""),string("BB")), length_error);
 }
